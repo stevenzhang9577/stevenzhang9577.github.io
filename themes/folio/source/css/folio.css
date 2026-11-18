@@ -1,0 +1,65 @@
+:root {
+  color-scheme: light;
+  --paper: #f8f8f2;
+  --panel: #f1f1e7;
+  --ink: #193c32;
+  --text: #33453b;
+  --muted: #58685a;
+  --line: #cdd2c4;
+  --orange: #af4a26;
+  --sans: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Baskervville", Georgia, "Songti SC", "STSong", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box }
+body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased }
+a { color: inherit; text-decoration: none }
+a:hover { color: var(--orange) }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px }
+.skip { position: absolute; left: 12px; top: -80px; padding: 8px; background: var(--paper) }
+.skip:focus { top: 8px }
+.wrap { width: calc(100% - clamp(40px, 9vw, 144px)); max-width: 1196px; margin-inline: auto }
+.mast { border-bottom: 1px solid var(--line) }
+.mast-row, .brand, nav, .kicker, .topics { display: flex; align-items: center }
+.mast-row { min-height: 73px; justify-content: space-between }
+.brand { gap: 11px; font-weight: 650 }
+.brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 7px; background: var(--ink); color: var(--paper); font: italic 29px/1 Georgia, serif }
+nav { gap: 24px }
+nav a { font-size: 14px; padding: 7px 0; border-bottom: 2px solid transparent }
+nav a[aria-current] { border-color: var(--orange) }
+main { flex: 1 }
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(25px, 5vw, 76px); align-items: center; padding: clamp(48px, 9vw, 140px) 0 }
+.kicker { gap: 10px; margin: 0; color: var(--muted); font-size: 13px; letter-spacing: .09em }
+.kicker::before { content: ""; width: 18px; height: 2px; background: var(--orange) }
+.bio h1 { margin: 17px 0 20px; font: 400 clamp(52px, 6.6vw, 96px)/1.08 var(--serif); letter-spacing: -.055em; text-wrap: balance }
+.topics { flex-wrap: wrap; gap: 12px; padding: 0; margin: 0; list-style: none; color: var(--text); font: 16px/1.5 var(--mono) }
+.topics li + li::before { content: "/"; color: var(--orange); margin-right: 12px }
+.plate { border: 1px solid var(--line); background: var(--panel); padding: 16px }
+.plate img { display: block; width: 100%; height: auto }
+#writing { border-top: 1px solid #879487; margin-bottom: 64px; padding-top: 16px }
+#writing h2 { font: 600 30px/1.4 var(--serif) }
+.postrow { display: grid; grid-template-columns: 118px 1fr; align-items: baseline; gap: 12px; border-top: 1px solid var(--line); padding: 18px 0 }
+.postrow time, .byline { font: 12px/1.6 var(--mono); color: var(--muted) }
+.postrow h3 { margin: 0; font: 600 24px/1.45 var(--serif) }
+.postrow p { margin: 5px 0 0; color: var(--text) }
+footer { border-top: 1px solid var(--line); padding: 22px 0; font: 12px/1.5 var(--mono); color: var(--muted) }
+.reading { max-width: 750px; margin: 0 auto; padding: 42px 0 64px }
+.back { color: var(--muted); font-size: 14px }
+.story-head { border-bottom: 1px solid var(--line); padding: 18px 0 26px }
+.story-head h1 { font: 600 clamp(34px, 5vw, 58px)/1.25 var(--serif); margin: 10px 0; overflow-wrap: anywhere }
+.story-head p, .prose { color: var(--text); line-height: 1.9; font-size: 17px }
+.prose { overflow-wrap: anywhere }
+.prose h2, .prose h3 { color: var(--ink); font-family: var(--serif); line-height: 1.45 }
+.prose img { max-width: 100%; height: auto }
+.prose pre { overflow-x: auto; padding: 12px; background: var(--panel) }
+.prose a { text-decoration: underline; text-underline-offset: .2em }
+.prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse }
+.prose td, .prose th { padding: 6px 14px 6px 0; border-bottom: 1px solid var(--line) }
+@media (max-width: 740px) {
+  .wrap { width: calc(100% - 40px) }
+  .mast-row { min-height: 62px }
+  .hero { grid-template-columns: 1fr; padding: 54px 0; gap: 32px }
+  .plate { padding: 12px }
+  .bio h1 { margin: 14px 0 }
+  .postrow { grid-template-columns: 1fr; gap: 4px }
+}

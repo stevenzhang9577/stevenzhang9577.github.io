@@ -1,0 +1,20 @@
+title: Zhang Boyuan
+author: Zhang Boyuan
+description: Zhang Boyuan 的技术博客，关注 LLM、Agent 和 Safety。
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://stevenzhang9577.github.io
+root: /
+permalink: writing/:title/
+public_dir: docs
+theme: folio
+per_page: 0
+index_generator:
+  per_page: 0
+  order_by: -date
+include:
+  - .nojekyll
+sitemap:
+  path: sitemap.xml
+  tags: false
+  categories: false

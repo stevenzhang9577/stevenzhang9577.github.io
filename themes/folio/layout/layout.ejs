@@ -1,0 +1,36 @@
+<%
+const home = is_home();
+const title = home ? config.title : `${page.title} · ${config.title}`;
+const description = page.description || config.description;
+const canonical = home ? config.url.replace(/\/$/, '') + '/' : page.permalink;
+%><!doctype html>
+<html lang="<%= config.language %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f8f2">
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>">
+  <meta name="author" content="<%= config.author %>">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <meta property="og:url" content="<%= canonical %>">
+  <link rel="canonical" href="<%= canonical %>">
+  <link rel="stylesheet" href="<%= url_for('css/folio.css') %>">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="mast"><div class="wrap mast-row">
+    <a class="brand" href="<%= url_for('/') %>" aria-label="<%= config.author %> 首页">
+      <span class="brand-mark" aria-hidden="true">∿</span><span lang="en"><%= config.author %></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="<%= url_for('/') %>" <%- home ? 'aria-current="page"' : '' %>>首页</a>
+      <% if (site.posts.length) { %><a href="<%= url_for('/') %>#writing">文章</a><% } %>
+    </nav>
+  </div></header>
+  <main id="main" class="wrap"><%- body %></main>
+  <footer><div class="wrap">© <span lang="en"><%= config.author %></span></div></footer>
+</body>
+</html>

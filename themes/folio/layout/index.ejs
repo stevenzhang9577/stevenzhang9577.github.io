@@ -1,0 +1,25 @@
+<section class="hero" aria-labelledby="author">
+  <div class="bio">
+    <p class="kicker">个人技术博客</p>
+    <h1 id="author" lang="en"><%= config.author %></h1>
+    <ul class="topics" aria-label="关注方向"><% theme.topics.forEach(topic => { %>
+      <li lang="en"><%= topic %></li>
+    <% }) %></ul>
+  </div>
+  <div class="plate" aria-hidden="true">
+    <img src="<%= url_for('media/surface.png') %>" width="1300" height="850" alt="">
+  </div>
+</section>
+<% if (site.posts.length) { %>
+  <section id="writing" aria-labelledby="writing-heading">
+    <h2 id="writing-heading">文章</h2>
+    <% site.posts.sort('date', -1).forEach(post => { %>
+      <article class="postrow">
+        <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY.MM.DD') %></time>
+        <div><h3><a href="<%= url_for(post.path) %>"><%= post.title %></a></h3>
+          <% if (post.description) { %><p><%= post.description %></p><% } %>
+        </div>
+      </article>
+    <% }) %>
+  </section>
+<% } %>
